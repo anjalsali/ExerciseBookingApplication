@@ -179,7 +179,7 @@ public class Main {
         exercises.add(new Exercise("swimming","Afternoon","01-01-2022",4,2));
         exercises.add(new Exercise("football","Evening","01-01-2022",4,6));
         exercises.add(new Exercise("cricket","Morning","02-01-2022",4,8));
-        exercises.add(new Exercise("zumba","afternoon","02-01-2022",4,10));
+        exercises.add(new Exercise("zumba","afternoon","02-01-2022",3,10));
         exercises.add(new Exercise("aquacise","Evening","02-01-2022",4,6));
         exercises.add(new Exercise("yoga","Morning","08-01-2022",4,5));
         exercises.add(new Exercise("swimming","Afternoon","08-01-2022",4,2));
@@ -241,7 +241,6 @@ public class Main {
 
 
         while(true){
-            OUTER:
             System.out.println(".....Welcome to USC Exercise Booking App....." +
                     "\nSelect an Option:"+
                     "\n[1] Display Timetable\n[2]Make a Booking" +
