@@ -122,44 +122,45 @@ public class Main {
         long anoOfBookings =0;
         int aincome = 0;
         for(Booking b:bookings){
-            System.out.println(b.getLessonDate().substring(3,5).equals(userDate));
+
             if(b.getLessonDate().substring(3,5).equals(userDate)){
+                if(b.getLessonName().equals("zumba")){
+                    znoOfBookings = bookings.stream().filter(booking -> booking.getLessonDate().equals("zumba")).count();
+                    zrating+=b.getRating();
+                    zincome=b.getPrice();
+                }
+                else if(b.getLessonName().equals("swimming")){
+                    snoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("swimming")).count();
+                    srating+=b.getRating();
+                    sincome=b.getPrice();
+                }
+                else if(b.getLessonName().equals("cricket")){
+                    cnoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("cricket")).count();
+                    crating+=b.getRating();
+                    cincome=b.getPrice();
+                }
+                else if(b.getLessonName().equals("football")){
+                    fnoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("football")).count();
+                    frating+=b.getRating();
+                    fincome=b.getPrice();
+                }
+                else if(b.getLessonName().equals("aquacise")){
+                    anoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("aquacise")).count();
+                    arating+=b.getRating();
+                    aincome=b.getPrice();
+                }
+                else if(b.getLessonName().equals("yoga")){
+                    ynoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("yoga")).count();
+                    yrating+=b.getRating();
+                    yincome=b.getPrice();
+                }
             }
 
-            if(b.getLessonName().equals("zumba")){
-                znoOfBookings = bookings.stream().filter(booking -> booking.getLessonDate().equals("zumba")).count();
-                zrating+=b.getRating();
-                zincome=b.getPrice();
-            }
-            else if(b.getLessonName().equals("swimming")){
-                snoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("swimming")).count();
-                srating+=b.getRating();
-                sincome=b.getPrice();
-            }
-            else if(b.getLessonName().equals("cricket")){
-                cnoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("cricket")).count();
-                crating+=b.getRating();
-                cincome=b.getPrice();
-            }
-            else if(b.getLessonName().equals("football")){
-                fnoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("football")).count();
-                frating+=b.getRating();
-                fincome=b.getPrice();
-            }
-            else if(b.getLessonName().equals("aquacise")){
-                anoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("aquacise")).count();
-                arating+=b.getRating();
-                aincome=b.getPrice();
-            }
-            else if(b.getLessonName().equals("yoga")){
-                ynoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("yoga")).count();
-                yrating+=b.getRating();
-                yincome=b.getPrice();
-            }
+
         }
 
         System.out.println("Class Name: Zumba  Total Bookings: " +znoOfBookings+
-                "   Average Rating " + zrating/(int)znoOfBookings + "  Total Income: " +zincome * (int)znoOfBookings  );
+                "   Average Rating " + zrating/(int)znoOfBookings + "  Total Income: " +zincome * (int)znoOfBookings);
         System.out.println("Class Name: Swimming  Total Bookings: " +snoOfBookings+
                 "   Average Rating " + srating/(int)snoOfBookings + "  Total Income: " +sincome * (int)snoOfBookings);
         System.out.println("Class Name: Cricket  Total Bookings: " +cnoOfBookings+
