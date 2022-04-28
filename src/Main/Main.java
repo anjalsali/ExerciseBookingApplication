@@ -125,7 +125,7 @@ public class Main {
 
             if(b.getLessonDate().substring(3,5).equals(userDate)){
                 if(b.getLessonName().equals("zumba")){
-                    znoOfBookings = bookings.stream().filter(booking -> booking.getLessonDate().equals("zumba")).count();
+                    znoOfBookings += 1;
                     zrating+=b.getRating();
                     zincome=b.getPrice();
                 }
@@ -225,16 +225,16 @@ public class Main {
         exercises.add(new Exercise("zumba","afternoon","19-02-2022",4,10));
         exercises.add(new Exercise("aquacise","Evening","19-02-2022",4,6));
 
-        bookings.add(new Booking("LM69104","zumba","02-01-2022","attended","Very Satisfied",5,10));
-        bookings.add(new Booking("LM69105","cricket","02-01-2022","attended","Satisfied",4,8));
-        bookings.add(new Booking("LM69106","football","08-01-2022","attended","Very Satisfied",5,6));
-        bookings.add(new Booking("LM69107","aquacise","09-01-2022","attended","Ok",3,6));
-        bookings.add(new Booking("LM69108","zumba","09-01-2022","attended","Very Satisfied",5,10));
-        bookings.add(new Booking("LM69109","swimming","15-01-2022","attended","Dissatisfied",2,2));
-        bookings.add(new Booking("LM69110","yoga","05-02-2022","attended","Very Satisfied",5,5));
-        bookings.add(new Booking("LM69112","cricket","06-02-2022","attended","Satisfied",4,8));
-        bookings.add(new Booking("LM69113","zumba","13-02-2022","attended","Very Satisfied",5,10));
-        bookings.add(new Booking("LM69114","aquacise","13-02-2022","attended","Ok",3,6));
+        bookings.add(new Booking("herts69104","zumba","02-01-2022","attended","Very Satisfied",5,10));
+        bookings.add(new Booking("herts69105","cricket","02-01-2022","attended","Satisfied",4,8));
+        bookings.add(new Booking("herts69106","football","08-01-2022","attended","Very Satisfied",5,6));
+        bookings.add(new Booking("herts69107","aquacise","09-01-2022","attended","Ok",3,6));
+        bookings.add(new Booking("herts69108","zumba","09-01-2022","attended","Very Satisfied",5,10));
+        bookings.add(new Booking("herts69109","swimming","15-01-2022","attended","Dissatisfied",2,2));
+        bookings.add(new Booking("herts69110","yoga","05-02-2022","attended","Very Satisfied",5,5));
+        bookings.add(new Booking("herts69112","cricket","06-02-2022","attended","Satisfied",4,8));
+        bookings.add(new Booking("herts69113","zumba","13-02-2022","attended","Very Satisfied",5,10));
+        bookings.add(new Booking("herts69114","aquacise","13-02-2022","attended","Ok",3,6));
 
         int userOption;
         int userInput;
@@ -343,6 +343,7 @@ public class Main {
                     monthlyReport(userDate);
 
                 }
+                break;
                 case 7:{
                     System.out.println("Thank You........");
                     System.exit(0);
