@@ -64,7 +64,9 @@ public class Exercise {
 
 
     public void classTimetable(){
-            System.out.println("Exercise name: " + lessonName + "     Session: " + session + "     Date: " + date + "     Number of slots: " + capacity + "     Fees: " + price);
+        System.out.println("------------------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20s%-20s%-20d%-20d\n",lessonName,session,date,capacity,price);
+           // System.out.println("Exercise name: " + lessonName + "     Session: " + session + "     Date: " + date + "     Number of slots: " + capacity + "     Fees: " + price);
     }
 
     public void classDetails(){

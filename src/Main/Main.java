@@ -9,8 +9,8 @@ public class Main {
     static  ArrayList<Exercise> exercises = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
-    static void changeBooking(String id){
-        String userBookingId = id;
+    static void changeBooking(String userBookingId){
+
         for(Booking b:bookings){
             if(b.getBookingId().equals(userBookingId)){
                 System.out.println("Booking Details Found\n");
@@ -46,9 +46,8 @@ public class Main {
         }
     }
 
-    static void cancelBooking(String id){
+    static void cancelBooking(String userBookingId){
 
-        String userBookingId = id;
         Booking bookObj = null;
         for(Booking b:bookings){
             if(b.getBookingId().equals(userBookingId)){
@@ -74,8 +73,7 @@ public class Main {
 
     }
 
-    static void attendClass(String id){
-        String userBookingId = id;
+    static void attendClass(String userBookingId){
         for(Booking b:bookings){
             if(b.getBookingId().equals(userBookingId) && b.getBookingStatus().equals("booked")){
                 System.out.println("Booking Details Found\n");
@@ -101,26 +99,13 @@ public class Main {
         }
     }
 
-    static void monthlyReport(String month){
-        String userDate = month;
-        float zrating = 0;
-        long znoOfBookings =0;
-        int zincome = 0;
-        float yrating = 0;
-        long ynoOfBookings =0;
-        int yincome = 0;
-        float crating = 0;
-        long cnoOfBookings =0;
-        int cincome = 0;
-        float frating = 0;
-        long fnoOfBookings =0;
-        int fincome = 0;
-        float srating = 0;
-        long snoOfBookings =0;
-        int sincome = 0;
-        float arating = 0;
-        long anoOfBookings =0;
-        int aincome = 0;
+    static void monthlyReport(String userDate ){
+        float zrating,yrating,arating,srating,frating,crating;
+        zrating=yrating=arating=srating=frating=crating=0;
+        int znoOfBookings,ynoOfBookings,cnoOfBookings,fnoOfBookings,snoOfBookings,anoOfBookings;
+        znoOfBookings=ynoOfBookings=cnoOfBookings=anoOfBookings=snoOfBookings=fnoOfBookings=0;
+        int zincome,yincome,cincome,aincome,fincome,sincome;
+        zincome=yincome=cincome=aincome=fincome=sincome=0;
         for(Booking b:bookings){
 
             if(b.getLessonDate().substring(3,5).equals(userDate)){
@@ -130,47 +115,45 @@ public class Main {
                     zincome=b.getPrice();
                 }
                 else if(b.getLessonName().equals("swimming")){
-                    snoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("swimming")).count();
+                    snoOfBookings =+1;
                     srating+=b.getRating();
                     sincome=b.getPrice();
                 }
                 else if(b.getLessonName().equals("cricket")){
-                    cnoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("cricket")).count();
+                    cnoOfBookings +=1;
                     crating+=b.getRating();
                     cincome=b.getPrice();
                 }
                 else if(b.getLessonName().equals("football")){
-                    fnoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("football")).count();
+                    fnoOfBookings +=1;
                     frating+=b.getRating();
                     fincome=b.getPrice();
                 }
                 else if(b.getLessonName().equals("aquacise")){
-                    anoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("aquacise")).count();
+                    anoOfBookings +=1;
                     arating+=b.getRating();
                     aincome=b.getPrice();
                 }
                 else if(b.getLessonName().equals("yoga")){
-                    ynoOfBookings = bookings.stream().filter(booking -> booking.getLessonName().equals("yoga")).count();
+                    ynoOfBookings +=1;
                     yrating+=b.getRating();
                     yincome=b.getPrice();
                 }
             }
-
-
         }
-
-        System.out.println("Class Name: Zumba  Total Bookings: " +znoOfBookings+
-                "   Average Rating " + zrating/(int)znoOfBookings + "  Total Income: " +zincome * (int)znoOfBookings);
-        System.out.println("Class Name: Swimming  Total Bookings: " +snoOfBookings+
-                "   Average Rating " + srating/(int)snoOfBookings + "  Total Income: " +sincome * (int)snoOfBookings);
-        System.out.println("Class Name: Cricket  Total Bookings: " +cnoOfBookings+
-                "   Average Rating " + crating/(int)cnoOfBookings + "  Total Income: " +cincome * (int)cnoOfBookings);
-        System.out.println("Class Name: Football  Total Bookings: " +fnoOfBookings+
-                "   Average Rating " + frating/(int)fnoOfBookings + "  Total Income: " +fincome * (int)fnoOfBookings);
-        System.out.println("Class Name: Aquacise  Total Bookings: " +anoOfBookings+
-                "   Average Rating " + arating/(int)anoOfBookings + "  Total Income: " +aincome * (int)anoOfBookings);
-        System.out.println("Class Name: Yoga  Total Bookings: " +ynoOfBookings+
-                "   Average Rating " + yrating/(int)ynoOfBookings + "  Total Income: " +yincome * (int)ynoOfBookings);
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20s%-20s%-20s\n","Class Name","Total Bookings","Average Rating","Total Income");
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20d%-20.2f%-20d\n","Zumba",znoOfBookings,zrating/znoOfBookings,zincome);
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20d%-20.2f%-20d\n","Swimming",snoOfBookings,srating/snoOfBookings,sincome);
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20d%-20.2f%-20d\n","Cricket",cnoOfBookings,crating/cnoOfBookings,cincome);
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20d%-20.2f%-20d\n","Aquacise",anoOfBookings,arating/anoOfBookings,aincome);
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20d%-20.2f%-20d\n","Yoga",ynoOfBookings,yrating/ynoOfBookings,yincome);
+        System.out.println("------------------------------------------------------------------------");
     }
 
 
@@ -241,16 +224,21 @@ public class Main {
 
 
         while(true){
-            System.out.println(".....Welcome to USC Exercise Booking App....." +
+            System.out.println("---------------------------------------------" +
+                    "\n.....Welcome to USC Exercise Booking App....." +
+                    "\n---------------------------------------------" +
                     "\nSelect an Option:"+
-                    "\n[1] Display Timetable\n[2]Make a Booking" +
-                    "\n[3]Change or Cancel Booking"+
-                    "\n[4]View all Bookings"+
-                    "\n[5]Attend a Lesson \n[6]Monthly report \n[7]Exit");
+                    "\n[1] Display Timetable\n[2] Make a Booking" +
+                    "\n[3] Change or Cancel Booking"+
+                    "\n[4] View all Bookings"+
+                    "\n[5] Attend a Lesson \n[6] Monthly report \n[7] Exit");
 
             userOption = scanner.nextInt();
             switch (userOption){
                 case 1:{
+                    System.out.println("-----------------------------------TIME TABLE---------------------------------------");
+                    System.out.println("------------------------------------------------------------------------------------\n");
+                    System.out.printf("%-20s%-20s%-20s%-20s%-20s\n","Lesson Name","Session","Date","Slots","Fees");
                     for(Exercise e:exercises){
                         e.classTimetable();
                     }
@@ -325,6 +313,7 @@ public class Main {
                 }
                 break;
                 case 4:{
+                    System.out.printf("%-20s%-20s%-20s%-20s\n","Booking ID","Lesson Name","Date","Booking Status");
                     for(Booking b:bookings){
                         b.bookingDetails();
                     }
@@ -338,7 +327,7 @@ public class Main {
                 break;
                 case 6:{
                     System.out.println("Welcome to Monthly Report");
-                    System.out.println("Enter the month for report [MM]");
+                    System.out.println("Enter a month number for report [01 - 02]");
                     String userDate = scanner.next();
                     monthlyReport(userDate);
 
