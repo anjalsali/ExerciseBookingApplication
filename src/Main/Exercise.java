@@ -66,24 +66,23 @@ public class Exercise {
     public void classTimetable(){
         System.out.println("------------------------------------------------------------------------------------");
         System.out.printf("%-20s%-20s%-20s%-20d%-20d\n",lessonName,session,date,capacity,price);
-           // System.out.println("Exercise name: " + lessonName + "     Session: " + session + "     Date: " + date + "     Number of slots: " + capacity + "     Fees: " + price);
     }
 
     public void classDetails(){
         if(capacity > 0){
-            System.out.println("Exercise name: " + lessonName + "     Session: " + session + "     Date: " + date + "     Number of slots: " + capacity + "     Fees: " + price);
-        }
+            System.out.println("------------------------------------------------------------------------------------");
+            System.out.printf("%-20s%-20s%-20s%-20d%-20d\n",lessonName,session,date,capacity,price);        }
     }
 
     public void displayDetailsByDate(String inputDate){
         if(date.equals(inputDate)) {
-            System.out.println("Exercise name: " + lessonName + "     Session: " + session + "     Date: " + date + "     Number of slots: " + capacity + "     Fees: " + price);
-        }
+            System.out.println("------------------------------------------------------------------------------------");
+            System.out.printf("%-20s%-20s%-20s%-20d%-20d\n",lessonName,session,date,capacity,price);        }
     }
     public void displayDetailsByClassName(String className){
         if(lessonName.equals(className)){
-            System.out.println("Exercise name: " + lessonName + "     Session: " + session + "     Date: " + date + "     Number of slots: " + capacity + "     Fees: " + price);
-        }
+            System.out.println("------------------------------------------------------------------------------------");
+            System.out.printf("%-20s%-20s%-20s%-20d%-20d\n",lessonName,session,date,capacity,price);        }
     }
 
     public void classBooking(String userLesson, String userDate, String userBookingId){
