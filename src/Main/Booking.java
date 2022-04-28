@@ -1,7 +1,5 @@
 package Main;
 
-import java.util.Scanner;
-
 public class Booking {
     private String bookingId;
     private  String lessonName;
@@ -10,7 +8,6 @@ public class Booking {
     private String review;
     private int rating;
     private  int price;
-    // private int capacity;
 
 
     public String getBookingId() {
@@ -73,15 +70,16 @@ public class Booking {
         this.review = review;
         this.rating = rating;
         this.price = price;
-//        this.capacity = cap;
     }
-
-
-    Scanner scanner = new Scanner(System.in);
 
     public void bookingDetails(){
         System.out.println("----------------------------------------------------------------------------");
         System.out.printf("%-20s%-20s%-20s%-20s\n",bookingId,lessonName,lessonDate,bookingStatus);
+    }
+
+    public void userRatings(){
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.printf("%-20s%-20s%-20s%-20d\n",lessonName,lessonDate,review,rating);
     }
 
     public void attendLesson(String id){
