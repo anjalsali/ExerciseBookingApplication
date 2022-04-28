@@ -122,14 +122,14 @@ public class Main {
         zincome=yincome=cincome=aincome=fincome=sincome=0;
         for(Booking b:bookings){
 
-            if(b.getLessonDate().substring(3,5).equals(userDate)){
+            if(b.getLessonDate().substring(3,5).equals(userDate) && b.getBookingStatus().equals("attended")){
                 if(b.getLessonName().equals("zumba")){
                     znoOfBookings += 1;
                     zrating+=b.getRating();
                     zincome=b.getPrice();
                 }
                 else if(b.getLessonName().equals("swimming")){
-                    snoOfBookings =+1;
+                    snoOfBookings +=1;
                     srating+=b.getRating();
                     sincome=b.getPrice();
                 }
@@ -168,6 +168,14 @@ public class Main {
         System.out.println("------------------------------------------------------------------------");
         System.out.printf("%-20s%-20d%-20.2f%-20d\n","Yoga",ynoOfBookings,yrating/ynoOfBookings,yincome);
         System.out.println("------------------------------------------------------------------------");
+
+        System.out.println("\n-------------------------Ratings and User Reviews---------------------------\n");
+        for(Booking b:bookings){
+            if(b.getBookingStatus().equals("attended") && b.getLessonDate().substring(3,5).equals(userDate)){
+                b.userRatings();
+            }
+        }
+
     }
 
 
@@ -175,7 +183,7 @@ public class Main {
 
         //Preloaded Time Table
 
-        exercises.add(new Exercise("yoga","Morning","01-01-2022",4,5));
+        exercises.add(new Exercise("yoga","Morning","01-01-2022",3,5));
         exercises.add(new Exercise("swimming","Afternoon","01-01-2022",4,2));
         exercises.add(new Exercise("football","Evening","01-01-2022",4,6));
         exercises.add(new Exercise("cricket","Morning","02-01-2022",2,8));
@@ -218,7 +226,7 @@ public class Main {
         exercises.add(new Exercise("zumba","afternoon","13-02-2022",2,10));
         exercises.add(new Exercise("aquacise","Evening","13-02-2022",2,6));
         exercises.add(new Exercise("yoga","Morning","19-02-2022",4,5));
-        exercises.add(new Exercise("swimming","Afternoon","19-02-2022",4,2));
+        exercises.add(new Exercise("swimming","Afternoon","19-02-2022",3,2));
         exercises.add(new Exercise("football","Evening","19-02-2022",4,6));
         exercises.add(new Exercise("cricket","Morning","20-02-2022",4,8));
         exercises.add(new Exercise("zumba","afternoon","20-02-2022",4,10));
@@ -237,6 +245,7 @@ public class Main {
         bookings.add(new Booking("herts79114","aquacise","13-02-2022","booked",null,0,6));
 
         //Preloaded Attended Classes
+        bookings.add(new Booking("herts79110","yoga","01-01-2022","attended","Good",4,5));
         bookings.add(new Booking("herts69104","zumba","02-01-2022","attended","Very Satisfied",5,10));
         bookings.add(new Booking("herts69105","cricket","02-01-2022","attended","Satisfied",4,8));
         bookings.add(new Booking("herts69106","football","08-01-2022","attended","Very Satisfied",5,6));
@@ -247,6 +256,7 @@ public class Main {
         bookings.add(new Booking("herts69112","cricket","06-02-2022","attended","Satisfied",4,8));
         bookings.add(new Booking("herts69113","zumba","13-02-2022","attended","Very Satisfied",5,10));
         bookings.add(new Booking("herts69114","aquacise","13-02-2022","attended","Ok",3,6));
+        bookings.add(new Booking("herts69109","swimming","19-02-2022","attended","Dissatisfied",2,2));
 
         while(true){
             int userOption;
