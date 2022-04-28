@@ -82,7 +82,6 @@ public class Booking {
     public void bookingDetails(){
         System.out.println("----------------------------------------------------------------------------");
         System.out.printf("%-20s%-20s%-20s%-20s\n",bookingId,lessonName,lessonDate,bookingStatus);
-        //System.out.println("Booking Id:"+bookingId+"    Exercise name: " + lessonName + "    Date: " + lessonDate + "         Booking Status: " + bookingStatus);
     }
 
     public void attendLesson(String id){
