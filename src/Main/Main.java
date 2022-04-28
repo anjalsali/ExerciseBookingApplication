@@ -236,8 +236,7 @@ public class Main {
             userOption = scanner.nextInt();
             switch (userOption){
                 case 1:{
-                    System.out.println("-----------------------------------TIME TABLE---------------------------------------");
-                    System.out.println("------------------------------------------------------------------------------------\n");
+                    System.out.println("-----------------------------------TIME TABLE---------------------------------------\n");
                     System.out.printf("%-20s%-20s%-20s%-20s%-20s\n","Lesson Name","Session","Date","Slots","Fees");
                     for(Exercise e:exercises){
                         e.classTimetable();
