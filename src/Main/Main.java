@@ -10,9 +10,10 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     static void changeBooking(String userBookingId){
-
+        int flag = 0;
         for(Booking b:bookings){
-            if(b.getBookingId().equals(userBookingId)){
+            if(b.getBookingId().equals(userBookingId) && b.getBookingStatus().equals("booked")){
+                flag ++;
                 System.out.println("Booking Details Found\n");
                 System.out.println("Booking ID:" + b.getBookingId() + "\nLesson Name:" + b.getLessonName()
                         + "\nDate:" + b.getLessonDate() + "\nBooking Status:" + b.getBookingStatus());
@@ -44,13 +45,17 @@ public class Main {
 
             }
         }
+        if(flag == 0){
+            System.out.println("Booking not Found or Already Attended");
+        }
     }
 
     static void cancelBooking(String userBookingId){
-
         Booking bookObj = null;
+        int flag = 0;
         for(Booking b:bookings){
-            if(b.getBookingId().equals(userBookingId)){
+            if(b.getBookingId().equals(userBookingId) && b.getBookingStatus().equals("booked")){
+                flag++;
                 bookObj = b;
                 System.out.println("Booking Details Found\n");
                 System.out.println("Booking ID:" + b.getBookingId() + "\nLesson Name:" + b.getLessonName()
@@ -69,13 +74,19 @@ public class Main {
                 }
             }
         }
-        bookings.remove(bookObj);
+        if(flag == 0){
+            System.out.println("Booking not Found or Already Attended");
+        }
+        else
+            bookings.remove(bookObj);
 
     }
 
     static void attendClass(String userBookingId){
+        int flag = 0;
         for(Booking b:bookings){
             if(b.getBookingId().equals(userBookingId) && b.getBookingStatus().equals("booked")){
+                flag ++;
                 System.out.println("Booking Details Found\n");
                 System.out.println("Booking ID:" + b.getBookingId() + "\nLesson Name:" + b.getLessonName()
                         + "\nDate:" + b.getLessonDate() + "\nBooking Status:" + b.getBookingStatus());
@@ -96,6 +107,9 @@ public class Main {
                 System.out.println("Class for Booking Id " +userBookingId+ " Already Attended");
                 break;
             }
+        }
+        if(flag == 0){
+            System.out.println("Booking Id not Found");
         }
     }
 
@@ -159,20 +173,22 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Preloaded Time Table
+
         exercises.add(new Exercise("yoga","Morning","01-01-2022",4,5));
         exercises.add(new Exercise("swimming","Afternoon","01-01-2022",4,2));
         exercises.add(new Exercise("football","Evening","01-01-2022",4,6));
-        exercises.add(new Exercise("cricket","Morning","02-01-2022",3,8));
-        exercises.add(new Exercise("zumba","afternoon","02-01-2022",3,10));
+        exercises.add(new Exercise("cricket","Morning","02-01-2022",2,8));
+        exercises.add(new Exercise("zumba","afternoon","02-01-2022",2,10));
         exercises.add(new Exercise("aquacise","Evening","02-01-2022",4,6));
         exercises.add(new Exercise("yoga","Morning","08-01-2022",4,5));
         exercises.add(new Exercise("swimming","Afternoon","08-01-2022",4,2));
-        exercises.add(new Exercise("football","Evening","08-01-2022",3,6));
+        exercises.add(new Exercise("football","Evening","08-01-2022",2,6));
         exercises.add(new Exercise("cricket","Morning","09-01-2022",4,8));
-        exercises.add(new Exercise("zumba","afternoon","09-01-2022",3,10));
-        exercises.add(new Exercise("aquacise","Evening","09-01-2022",3,6));
+        exercises.add(new Exercise("zumba","afternoon","09-01-2022",2,10));
+        exercises.add(new Exercise("aquacise","Evening","09-01-2022",2,6));
         exercises.add(new Exercise("yoga","Morning","15-01-2022",4,5));
-        exercises.add(new Exercise("swimming","Afternoon","15-01-2022",3,2));
+        exercises.add(new Exercise("swimming","Afternoon","15-01-2022",2,2));
         exercises.add(new Exercise("football","Evening","15-01-2022",4,6));
         exercises.add(new Exercise("cricket","Morning","16-01-2022",4,8));
         exercises.add(new Exercise("zumba","afternoon","16-01-2022",4,10));
@@ -189,25 +205,38 @@ public class Main {
         exercises.add(new Exercise("cricket","Morning","30-01-2022",4,8));
         exercises.add(new Exercise("zumba","afternoon","30-01-2022",4,10));
         exercises.add(new Exercise("aquacise","Evening","30-01-2022",4,6));
-        exercises.add(new Exercise("yoga","Morning","05-02-2022",3,5));
+        exercises.add(new Exercise("yoga","Morning","05-02-2022",2,5));
         exercises.add(new Exercise("swimming","Afternoon","05-02-2022",4,2));
         exercises.add(new Exercise("football","Evening","05-02-2022",4,6));
-        exercises.add(new Exercise("cricket","Morning","06-02-2022",3,8));
+        exercises.add(new Exercise("cricket","Morning","06-02-2022",2,8));
         exercises.add(new Exercise("zumba","afternoon","06-02-2022",4,10));
         exercises.add(new Exercise("aquacise","Evening","06-02-2022",4,6));
         exercises.add(new Exercise("yoga","Morning","12-02-2022",4,5));
         exercises.add(new Exercise("swimming","Afternoon","12-02-2022",4,2));
         exercises.add(new Exercise("football","Evening","12-02-2022",4,6));
         exercises.add(new Exercise("cricket","Morning","13-02-2022",4,8));
-        exercises.add(new Exercise("zumba","afternoon","13-02-2022",3,10));
-        exercises.add(new Exercise("aquacise","Evening","13-02-2022",3,6));
+        exercises.add(new Exercise("zumba","afternoon","13-02-2022",2,10));
+        exercises.add(new Exercise("aquacise","Evening","13-02-2022",2,6));
         exercises.add(new Exercise("yoga","Morning","19-02-2022",4,5));
         exercises.add(new Exercise("swimming","Afternoon","19-02-2022",4,2));
         exercises.add(new Exercise("football","Evening","19-02-2022",4,6));
-        exercises.add(new Exercise("cricket","Morning","19-02-2022",4,8));
-        exercises.add(new Exercise("zumba","afternoon","19-02-2022",4,10));
-        exercises.add(new Exercise("aquacise","Evening","19-02-2022",4,6));
+        exercises.add(new Exercise("cricket","Morning","20-02-2022",4,8));
+        exercises.add(new Exercise("zumba","afternoon","20-02-2022",4,10));
+        exercises.add(new Exercise("aquacise","Evening","20-02-2022",4,6));
 
+        //Preloaded Booking Data
+        bookings.add(new Booking("herts79104","zumba","02-01-2022","booked",null,0,10));
+        bookings.add(new Booking("herts79105","cricket","02-01-2022","booked",null,0,8));
+        bookings.add(new Booking("herts79106","football","08-01-2022","booked",null,0,6));
+        bookings.add(new Booking("herts79107","aquacise","09-01-2022","booked",null,0,6));
+        bookings.add(new Booking("herts79108","zumba","09-01-2022","booked",null,0,10));
+        bookings.add(new Booking("herts79109","swimming","15-01-2022","booked",null,0,2));
+        bookings.add(new Booking("herts79110","yoga","05-02-2022","booked",null,0,5));
+        bookings.add(new Booking("herts79112","cricket","06-02-2022","booked",null,0,8));
+        bookings.add(new Booking("herts79113","zumba","13-02-2022","booked",null,0,10));
+        bookings.add(new Booking("herts79114","aquacise","13-02-2022","booked",null,0,6));
+
+        //Preloaded Attended Classes
         bookings.add(new Booking("herts69104","zumba","02-01-2022","attended","Very Satisfied",5,10));
         bookings.add(new Booking("herts69105","cricket","02-01-2022","attended","Satisfied",4,8));
         bookings.add(new Booking("herts69106","football","08-01-2022","attended","Very Satisfied",5,6));
@@ -219,12 +248,11 @@ public class Main {
         bookings.add(new Booking("herts69113","zumba","13-02-2022","attended","Very Satisfied",5,10));
         bookings.add(new Booking("herts69114","aquacise","13-02-2022","attended","Ok",3,6));
 
-        int userOption;
-        int userInput;
-
-
         while(true){
-            System.out.println("---------------------------------------------" +
+            int userOption;
+            int userInput;
+            Scanner userSc = new Scanner(System.in);
+            System.out.println("\n\n---------------------------------------------" +
                     "\n.....Welcome to USC Exercise Booking App....." +
                     "\n---------------------------------------------" +
                     "\nSelect an Option:"+
@@ -233,113 +261,130 @@ public class Main {
                     "\n[4] View all Bookings"+
                     "\n[5] Attend a Lesson \n[6] Monthly report \n[7] Exit");
 
-            userOption = scanner.nextInt();
-            switch (userOption){
-                case 1:{
-                    System.out.println("-----------------------------------TIME TABLE---------------------------------------\n");
-                    System.out.printf("%-20s%-20s%-20s%-20s%-20s\n","Lesson Name","Session","Date","Slots","Fees");
-                    for(Exercise e:exercises){
-                        e.classTimetable();
+            try {
+                userOption = userSc.nextInt();
+                switch (userOption){
+                    case 1:{
+                        System.out.println("-----------------------------------TIME TABLE---------------------------------------\n");
+                        System.out.printf("%-20s%-20s%-20s%-20s%-20s\n","Lesson Name","Session","Date","Slots","Fees");
+                        for(Exercise e:exercises){
+                            e.classTimetable();
+                        }
                     }
-                }
                     break;
-                case 2:{
-                    System.out.println("Select a Booking Option");
-                    System.out.println("[1] View classes by Date \n[2] View classes by Name");
-                    userInput = scanner.nextInt();
-                    if(userInput == 1) {
-                        System.out.println("Book By Date" +
-                                "\nClasses are scheduled on " +
-                                "\n January: " +
-                                "\n01-01-2022 \n02-01-2022"+
-                                "\n08-01-2022 \n09-01-2022"+
-                                "\n15-01-2022 \n16-01-2022"+
-                                "\n22-01-2022 \n23-01-2022"+
-                                "\n29-01-2022 \n30-01-2022"+
-                                "\nFebruary: "+
-                                "\n05-02-2022 \n06-01-2022"+
-                                "\n12-02-2022 \n13-01-2022"+
-                                "\n19-02-2022 \n20-01-2022");
-                        String userInputDate;
-                        System.out.println("Enter a date from above in dd-mm-yyyy format");
-                        userInputDate = scanner.next();
-                        for(Exercise e:exercises) {
-                            e.displayDetailsByDate(userInputDate);
-                        }
-                        System.out.println("Please choose a lesson");
-                        String userConfirmedLesson = scanner.next();
+                    case 2:{
+                        System.out.println("Select a Booking Option");
+                        System.out.println("[1] View classes by Date \n[2] View classes by Name");
+                        try {
+                            Scanner sc = new Scanner(System.in);
+                            userInput = sc.nextInt();
+                            switch (userInput){
+                                case 1:{
+                                    System.out.println("Book By Date" +
+                                            "\nClasses are scheduled on " +
+                                            "\n January: " +
+                                            "\n01-01-2022 \n02-01-2022"+
+                                            "\n08-01-2022 \n09-01-2022"+
+                                            "\n15-01-2022 \n16-01-2022"+
+                                            "\n22-01-2022 \n23-01-2022"+
+                                            "\n29-01-2022 \n30-01-2022"+
+                                            "\nFebruary: "+
+                                            "\n05-02-2022 \n06-01-2022"+
+                                            "\n12-02-2022 \n13-01-2022"+
+                                            "\n19-02-2022 \n20-01-2022");
+                                    String userInputDate;
+                                    System.out.println("Enter a date from above in dd-mm-yyyy format");
+                                    userInputDate = scanner.next();
+                                    System.out.printf("%-20s%-20s%-20s%-20s%-20s\n","Lesson Name","Session","Date","Slots","Fees");
+                                    for(Exercise e:exercises) {
+                                        e.displayDetailsByDate(userInputDate);
+                                    }
+                                    System.out.println("Please choose a lesson");
+                                    String userConfirmedLesson = scanner.next();
 
-                        for(Exercise booking:exercises) {
-                            booking.classBooking(userConfirmedLesson, userInputDate, null);
+                                    for(Exercise booking:exercises) {
+                                        booking.classBooking(userConfirmedLesson, userInputDate, null);
+                                    }
+                                }
+                                break;
+                                case 2:{
+                                    System.out.println("Book By Lesson Name");
+                                    String userInputLesson;
+                                    System.out.println("Enter a Lesson Name");
+                                    userInputLesson = scanner.next();
+                                    System.out.printf("%-20s%-20s%-20s%-20s%-20s\n","Lesson Name","Session","Date","Slots","Fees");
+                                    for (Exercise e : exercises) {
+                                        e.displayDetailsByClassName(userInputLesson);
+                                    }
+                                    System.out.println("Enter a date in dd-mm-yyyy format");
+                                    String userConfirmedDate = scanner.next();
+
+                                    for(Exercise booking:exercises) {
+                                        booking.classBooking(userInputLesson, userConfirmedDate,null);
+                                    }
+                                }
+                                break;
+                                default:
+                                    System.out.println("Invalid Choice");
+                                    break;
+                            }
+                        }catch (Exception e){
+                            System.out.println("Expected a Numeric input [1-2]");
                         }
                     }
-                    else if(userInput == 2) {
-                        System.out.println("Book By Lesson Name");
-                        String userInputLesson;
-                        System.out.println("Enter a Lesson Name");
-                        userInputLesson = scanner.next();
-                        for (Exercise e : exercises) {
-                            e.displayDetailsByClassName(userInputLesson);
+                    break;
+                    case 3:{
+                        System.out.println("[1] Change Booking\n[2] Cancel Booking");
+                        System.out.println("Please Enter Your option: ");
+                        int choice = userSc.nextInt();
+                        if(choice == 1){
+                            System.out.println("Please Enter your Booking ID: ");
+                            String userBookingId = userSc.next();
+                            changeBooking(userBookingId);
                         }
-                        System.out.println("Enter a date in dd-mm-yyyy format");
-                        String userConfirmedDate = scanner.next();
-
-                        for(Exercise booking:exercises) {
-                            booking.classBooking(userInputLesson, userConfirmedDate,null);
+                        else if(choice ==2) {
+                            System.out.println("Please Enter your Booking ID: ");
+                            String userBookingId = scanner.next();
+                            cancelBooking(userBookingId);
+                        }
+                        else
+                            System.out.println("Invalid Choice");
+                    }
+                    break;
+                    case 4:{
+                        System.out.printf("%-20s%-20s%-20s%-20s\n","Booking ID","Lesson Name","Date","Booking Status");
+                        for(Booking b:bookings){
+                            if(b.getBookingStatus().equals("booked"))
+                                b.bookingDetails();
                         }
                     }
-                    else
-                        System.out.println("Invalid Choice");
-
-                }
-                break;
-                case 3:{
-                    System.out.println("[1] Change Booking\n[2] Cancel Booking");
-                    System.out.println("Please Enter Your option: ");
-                    int choice = scanner.nextInt();
-                    if(choice == 1){
+                    break;
+                    case 5:{
                         System.out.println("Please Enter your Booking ID: ");
                         String userBookingId = scanner.next();
-                        changeBooking(userBookingId);
+                        attendClass(userBookingId);
                     }
-                    else if(choice ==2) {
-                        System.out.println("Please Enter your Booking ID: ");
-                        String userBookingId = scanner.next();
-                        cancelBooking(userBookingId);
-                    }
-                    else
-                        System.out.println("Invalid Choice");
-                }
-                break;
-                case 4:{
-                    System.out.printf("%-20s%-20s%-20s%-20s\n","Booking ID","Lesson Name","Date","Booking Status");
-                    for(Booking b:bookings){
-                        b.bookingDetails();
-                    }
-                }
-                break;
-                case 5:{
-                    System.out.println("Please Enter your Booking ID: ");
-                    String userBookingId = scanner.next();
-                    attendClass(userBookingId);
-                }
-                break;
-                case 6:{
-                    System.out.println("Welcome to Monthly Report");
-                    System.out.println("Enter a month number for report [01 - 02]");
-                    String userDate = scanner.next();
-                    monthlyReport(userDate);
-
-                }
-                break;
-                case 7:{
-                    System.out.println("Thank You........");
-                    System.exit(0);
-                }
-                break;
-                default:
-                    System.out.println("Invalid Option, Try again....");
                     break;
+                    case 6:{
+                        System.out.println("Welcome to Monthly Report");
+                        System.out.println("Enter a month number for report [01 - 02]");
+                        String userDate = scanner.next();
+                        monthlyReport(userDate);
+
+                    }
+                    break;
+                    case 7:{
+                        System.out.println("Thank You........");
+                        System.exit(0);
+                    }
+                    break;
+                    default:
+                        System.out.println("Invalid Option, Try again....");
+                        break;
+                }
+            }
+            catch (Exception e){
+                System.out.println("Expected a Numeric Input, Try Again.......");
             }
         }
     }
