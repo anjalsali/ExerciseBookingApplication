@@ -95,16 +95,18 @@ public class Main {
                 if (confirmation.equals("y")) {
                     b.attendLesson(userBookingId);
                     System.out.println("Class Attended\n");
-                    System.out.println("Please write a review for the class\n");
+                    System.out.println("Please write a review for the class [One Word] \n");
                     String userReview = scanner.next();
                     b.setReview(userReview);
                     System.out.println("Please give a rating for the Class [1-5] \n");
                     int userRating= scanner.nextInt();
                     b.setRating(userRating);
+                    System.out.println("Rating and Review Submitted");
                 }
             }
             else if (b.getBookingId().equals(userBookingId) && b.getBookingStatus().equals("attended")){
                 System.out.println("Class for Booking Id " +userBookingId+ " Already Attended");
+                flag++;
                 break;
             }
         }
@@ -362,6 +364,7 @@ public class Main {
                     }
                     break;
                     case 4:{
+                        System.out.println("\n-------------------------Booking Details  --------------------------------\n");
                         System.out.printf("%-20s%-20s%-20s%-20s\n","Booking ID","Lesson Name","Date","Booking Status");
                         for(Booking b:bookings){
                             if(b.getBookingStatus().equals("booked"))
